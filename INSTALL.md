@@ -1,6 +1,14 @@
-# 安装与使用
+# Company Lens：安装与使用
 
 此文件夹是完整 Agent Skill，保留 scripts、references、assets、agents 及许可文件的相对位置。需要联网阅读/搜索、读写文件及Python执行能力；没有账号或付费数据库也可研究公开资料。技能不会自行获得网站权限或绕过付费墙。
+
+项目仓库为 [gezi71/company-lens](https://github.com/gezi71/company-lens)，技能名称和安装文件夹保留为 `comprehensive-company-research`。英文安装和使用介绍见 [English README](README.en.md)。
+
+获取完整文件夹：
+
+```sh
+git clone https://github.com/gezi71/company-lens.git comprehensive-company-research
+```
 
 ## Codex
 

@@ -1,10 +1,12 @@
-# 全面公司分析
+# Company Lens
 
-**Comprehensive Company Research** 是面向 Codex 与 Claude Code 的公司深度研究 Skill。基于公开一手资料，研究全球上市及非上市公司的商业模式、行业竞争、财务质量、风险和估值，交付 **22 章中文报告、可复算 Excel 模型和研究跟踪清单**。
+[简体中文](README.md) | [English](README.en.md)
+
+**Company Lens** 是面向 Codex 与 Claude Code 的公司深度研究 Skill。基于公开一手资料，研究全球上市及非上市公司的商业模式、行业竞争、财务质量、风险和估值，交付 **22 章中文报告、可复算 Excel 模型和研究跟踪清单**。
 
 研究始终分别判断：**公司质量如何、增长能否兑现、价格是否合理**，并说明什么证据会推翻当前结论。
 
-[快速开始](#快速开始) · [使用示例](#使用示例) · [数据来源](#数据来源) · [交付成果](#交付成果) · [模型能力](#模型能力) · [验证与边界](#验证与边界) · [下载试用版](https://github.com/gezi71/comprehensive-company-research/releases/tag/v0.1.0)
+[快速开始](#快速开始) · [使用示例](#使用示例) · [数据来源](#数据来源) · [交付成果](#交付成果) · [模型能力](#模型能力) · [验证与边界](#验证与边界) · [下载试用版](https://github.com/gezi71/company-lens/releases/tag/v0.1.0)
 
 > 当前为 `v0.1.0` 试用版。研究需要 Agent 具备搜索、原文阅读、文件读写和 Python 执行能力。支持范围与实际测试范围见下文。
 
@@ -24,11 +26,13 @@
 
 以下为 macOS / Linux 的个人安装示例，选择对应平台运行。目标目录已存在时，先检查已有副本，避免重复安装。
 
+仓库名为 `company-lens`，安装目录与技能调用名保留为 `comprehensive-company-research`，兼容已有安装。
+
 **Codex**
 
 ```bash
 mkdir -p ~/.agents/skills
-git clone https://github.com/gezi71/comprehensive-company-research.git \
+git clone https://github.com/gezi71/company-lens.git \
   ~/.agents/skills/comprehensive-company-research
 ```
 
@@ -36,11 +40,11 @@ git clone https://github.com/gezi71/comprehensive-company-research.git \
 
 ```bash
 mkdir -p ~/.claude/skills
-git clone https://github.com/gezi71/comprehensive-company-research.git \
+git clone https://github.com/gezi71/company-lens.git \
   ~/.claude/skills/comprehensive-company-research
 ```
 
-也可以下载 [Release ZIP](https://github.com/gezi71/comprehensive-company-research/releases/tag/v0.1.0)，解压后将整个 `comprehensive-company-research` 文件夹放入对应技能目录，保留内部文件结构。
+也可以下载 [Release ZIP](https://github.com/gezi71/company-lens/releases/tag/v0.1.0)，解压后将整个 `comprehensive-company-research` 文件夹放入对应技能目录，保留内部文件结构。
 
 项目级安装、Windows 路径和完整配置见 [INSTALL.md](INSTALL.md)。安装位置依据 [OpenAI 官方技能文档](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) 与 [Claude Code 官方技能文档](https://code.claude.com/docs/en/skills)核对；组织策略或云端环境可能使用不同的加载方式。
 
@@ -246,6 +250,12 @@ flowchart LR
 **怎样更新已安装的 Skill？**
 
 在通过 Git 安装的技能目录执行 `git pull --ff-only`。有本地改动时先检查差异，再决定合并方式。ZIP 安装可下载新版本并保留自己的修改。
+
+已有 Git 安装可将远程地址更新为新仓库：
+
+```bash
+git remote set-url origin https://github.com/gezi71/company-lens.git
+```
 
 ## 项目文件
 
