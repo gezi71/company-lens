@@ -1,0 +1,4 @@
+interface:
+  display_name: "全面公司分析"
+  short_description: "全球上市与非上市公司全面研究，交付完整报告、联动财务模型和可验证的跟踪清单"
+  default_prompt: "使用 $comprehensive-company-research 对指定公司开展全面研究，输出中文报告、Excel 模型与跟踪清单。"

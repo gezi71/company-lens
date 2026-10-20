@@ -1,0 +1,107 @@
+{
+  "company": "Microsoft FY2025 来源抽查（非完整公司研究）",
+  "synthetic": false,
+  "as_of": "2025-10-15",
+  "currency": "USD",
+  "money_unit": "million",
+  "shares_unit": "million",
+  "industry_type": "operating",
+  "history": [
+    {
+      "year": 2024,
+      "revenue": 245122,
+      "ebit": 109433,
+      "net_income": 88136,
+      "cfo": 118548,
+      "capex": 44477,
+      "cash": 18315,
+      "assets": 512163,
+      "liabilities": 243686,
+      "equity": 268477,
+      "da": null
+    },
+    {
+      "year": 2025,
+      "revenue": 281724,
+      "ebit": 128528,
+      "net_income": 101832,
+      "cfo": 136162,
+      "capex": 64551,
+      "cash": 30242,
+      "assets": 619003,
+      "liabilities": 275524,
+      "equity": 343479,
+      "da": null
+    }
+  ],
+  "valuation": {
+    "method": "unavailable",
+    "reason": "本输入仅做真实报表提取与历史计算抽查，未收集估值假设或完整建模输入。"
+  },
+  "provenance": {
+    "history.0": "Microsoft FY2025 Form10-K 2025-07-30; FY2024对比列；https://www.microsoft.com/investor/reports/ar25/index.html ;Income Statements p50 / Balance Sheets p52 / Cash Flows p53",
+    "history.1": "Microsoft FY2025 Form10-K 2025-07-30; FY2025列；https://www.microsoft.com/investor/reports/ar25/index.html ;Income Statements p50 / Balance Sheets p52 / Cash Flows p53",
+    "period": "Microsoft FY2025年报财年标签"
+  },
+  "limitations": [
+    "D&A未填写：现金流量表该行是depreciation, amortization, and other，不能当作纯D&A。",
+    "这里只抽取两年公开原值；不是完成了五年研究、预测或投资结论。"
+  ],
+  "supplemental_schedules": [
+    {
+      "name": "HistoricalCash",
+      "cells": [
+        {
+          "address": "A1",
+          "value": "公开财报抽查：CFO减现金PP&E；不称为FCFF"
+        },
+        {
+          "address": "B3",
+          "value": 2024,
+          "input_path": "period.2024"
+        },
+        {
+          "address": "C3",
+          "value": 2025,
+          "input_path": "period.2025"
+        },
+        {
+          "address": "A4",
+          "value": "CFO - cash CapEx"
+        },
+        {
+          "address": "B4",
+          "formula": "='Actuals'!B31-'Actuals'!B16"
+        },
+        {
+          "address": "C4",
+          "formula": "='Actuals'!C31-'Actuals'!C16"
+        },
+        {
+          "address": "A5",
+          "value": "Assets - Liabilities - Equity"
+        },
+        {
+          "address": "B5",
+          "formula": "='Actuals'!B23-'Actuals'!B30-'Actuals'!B28"
+        },
+        {
+          "address": "C5",
+          "formula": "='Actuals'!C23-'Actuals'!C30-'Actuals'!C28"
+        }
+      ]
+    }
+  ],
+  "industry_checks": [
+    {
+      "name": "FY2024 balance",
+      "sheet": "HistoricalCash",
+      "address": "B5"
+    },
+    {
+      "name": "FY2025 balance",
+      "sheet": "HistoricalCash",
+      "address": "C5"
+    }
+  ]
+}
