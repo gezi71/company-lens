@@ -19,12 +19,12 @@ description: "对全球上市及非上市公司开展全面基本面、商业模
 
 ## 工作流
 
-1. **建立工作目录。** 阅读 [执行与证据规范](references/workflow-evidence.md)，运行 `scripts/init_research.py` 建立新的 `research/<公司标识>/<截止日>/`。已有目录先核对身份/截止日/披露版本，再复用有效材料，不覆盖成果；可选用 `scripts/research_context.py status <研究目录>` 查询已有状态。当前日期由运行环境提供，日期不可硬编码。
-2. **形成问题与覆盖计划。** 浏览 [51项研究导航](references/research-map.md) 及其中的全流程要求；按研究主题定位规范JSON的完整细则、已有证据与缺口，按关联章节补查；需要合并查询时可选用 `scripts/research_context.py section <研究目录> <章节号>`。已读且仍可定位的细则和证据直接复用，不机械地为每章重复查询；所有研究项的细则仍须处理。围绕商业模式、增长资本需求、竞争、现金兑现、预期与证伪提出问题；规划本地监管文件、财务序列、客户/竞争对手及反方材料。覆盖表每项都要有处理结果，不能只勾选“已研究”。
+1. **建立工作目录。** 阅读 [执行与证据规范](references/workflow-evidence.md)，运行 `scripts/init_research.py` 建立新的 `research/<公司标识>/<截止日>/`。已有目录先检查 `state.json`，复用已核实材料，不覆盖成果。当前日期由运行环境提供，日期不可硬编码。
+2. **形成问题与覆盖计划。** 阅读 [51项研究清单](references/research-map.md)。围绕商业模式、增长资本需求、竞争、现金兑现、预期与证伪提出问题；规划本地监管文件、财务序列、客户/竞争对手及反方材料。覆盖表每项都要有处理结果，不能只勾选“已研究”。
 3. **采集和核验。** 建立 `sources.json` 和 `evidence.json`，保存关键原文定位。先公司/监管披露，再独立行业证据和高质量媒体。至少回看五年可得财务，周期企业延伸到完整周期。对商业优势、TAM、客户和技术说法寻找独立验证；冲突单列。付费墙、403、无披露不等于零值。
-4. **分析与建模。** 根据 [行业与估值方法](references/modeling.md) 选方法；用 [输入接口](references/data-contract.md) 整理输入。执行 `scripts/build_model.py input.json model.xlsx --summary`，再运行 `scripts/check_workbook.py model.xlsx --recalculate --summary`。检查完整运行，按返回路径查看需处理的明细；查询个别结果用 `scripts/research_context.py model <研究目录> <单元格引用…>`。脚本提供普通经营企业三表/FCFF与股利、剩余收益、NAV的基本构件；行业专属业务附表须由 Agent 根据披露补充，不能把通用模板当成完整银行或保险模型。
+4. **分析与建模。** 根据 [行业与估值方法](references/modeling.md) 选方法；用 [输入接口](references/data-contract.md) 整理输入。执行 `scripts/build_model.py input.json model.xlsx`，再运行 `scripts/check_workbook.py model.xlsx --recalculate`。脚本提供普通经营企业三表/FCFF与股利、剩余收益、NAV的基本构件；行业专属业务附表须由 Agent 根据披露补充，不能把通用模板当成完整银行或保险模型。
 5. **反方检验。** 对最强空头观点、会计争议、客户流失、替代技术、融资和监管情景逐条给证据与影响，至少提出五个实质反证方向。资料支持不足可判“待验证”，不编造第五个已发生事件。允许没有可证实预期差。
-6. **组装成果。** 按 [报告与评分标准](references/report-contract.md) 完成 `report.md` 的22章原始目录，填写 `tracker.md`；运行 `scripts/research_context.py coverage <研究目录>` 从最终台账生成附录A，核对发现和限制。将可复算输入与证据保留在 `work/`，模型输入/输出和正文数字通过 `claims.json` 对齐。同一事实复用证据ID，不为不同成品重复整理。只有明确要求文章模式才阅读 [文章模式](references/article-mode.md) 并另交付文章。
+6. **组装成果。** 按 [报告与评分标准](references/report-contract.md) 完成 `report.md` 的22章原始目录，附51项覆盖表；填写 `tracker.md`。将可复算输入与证据保留在 `work/`，模型输入/输出和正文数字通过 `claims.json` 对齐。只有明确要求文章模式才阅读 [文章模式](references/article-mode.md) 并另交付文章。
 7. **验收与交付。** 运行 `scripts/validate_research.py <研究目录>`。修复能修复的问题，列出其余缺口、实际模型检查和引擎重算状态；运行检查通过不等于事实正确。只完成条件性研究也可交付，但相关状态须为 `limited`，不可称为全面核实。最终链接报告、Excel、跟踪清单。
 
 ## 关键约束

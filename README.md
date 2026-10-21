@@ -46,8 +46,6 @@ git clone https://github.com/gezi71/company-lens.git \
 
 也可以下载 [Release ZIP](https://github.com/gezi71/company-lens/releases/tag/v0.1.0)，解压后将整个 `comprehensive-company-research` 文件夹放入对应技能目录，保留内部文件结构。
 
-最新效率工具请使用上面的 Git 安装方式更新 `main`；`v0.1.0` ZIP 保留为原始试用版，不包含后续改动。
-
 项目级安装、Windows 路径和完整配置见 [INSTALL.md](INSTALL.md)。安装位置依据 [OpenAI 官方技能文档](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) 与 [Claude Code 官方技能文档](https://code.claude.com/docs/en/skills)核对；组织策略或云端环境可能使用不同的加载方式。
 
 ### 2. 准备模型运行环境
@@ -217,25 +215,6 @@ flowchart LR
 - **评分依据**：保留七项十分制评分，附证据与方向；资料不足允许不评分，风险高分代表高风险。
 
 阶段材料随研究保存，方便中断后继续。资料不足时可交付条件性结论，受影响部分保持 `limited`，不称为全面核实。
-
-## 复用工具与 token 实测
-
-完整研究仍覆盖51项、22章、Excel模型、反方检验和最终验收。优化集中在复用原文与证据、按章节读取细则，以及用脚本生成固定附录；不通过缩短报告或减少核验节省用量。
-
-- **按需读取**：51项导航保留全貌，581条细则集中在JSON；按章查询会保留相关来源、限制、冲突和递归推断依据。
-- **复用底稿**：恢复前核对主体、截止日和披露版本，再复用有效资料；有新披露或重述时重核受影响内容。
-- **固定内容自动生成**：附录A由覆盖台账生成，保持完整51行；模型检查可只在控制台返回计数和样例，完整明细保留本地。
-
-```sh
-python3 scripts/research_context.py status <研究目录>
-python3 scripts/research_context.py section <研究目录> 7
-python3 scripts/research_context.py model <研究目录> 'Base!B5' 'Valuation!B23'
-python3 scripts/research_context.py coverage <研究目录>
-```
-
-模型构建和工作簿检查支持可选 `--summary`，不改变计算、检查或退出规则。查询工具只读已有台账，不证明其仍然有效，也不替代全局验收。新增工具仅用Python标准库，没有新运行依赖。详见[数据接口](references/data-contract.md)。
-
-微软完整对照中，计入质量补充后，总token增加12.70%，未验证整轮节省。因此状态/章节查询保留为可选工具，不作为默认必经步骤。清单、22章报告、Excel与核验要求保持；不承诺节省比例。完整计量、缓存影响及测试边界见[验证记录](VALIDATION.md)。
 
 ## 验证与边界
 

@@ -94,9 +94,7 @@
 
 ## 附录 A：51项覆盖清单
 
-<!-- coverage:start -->
 {{由 work/coverage.json 的最终记录生成；每项包含发现/限制与正文位置}}
-<!-- coverage:end -->
 
 ## 附录 B：来源、冲突与资料缺口
 

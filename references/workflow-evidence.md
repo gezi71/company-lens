@@ -4,13 +4,7 @@
 
 阶段为 identity → plan → evidence → analysis → model → adversarial → report → validation。`state.json` 每阶段记录 pending/in_progress/complete/limited、产物、缺口及下一步。恢复时先核对身份/截止日/财报版本，复用有效台账；新披露或截止日改变时重算受影响部分。不要把旧观点静默当作新结论。
 
-默认成果为 report.md、model.xlsx、tracker.md；model-results.json 与 model.xlsx 同目录。work 下保存 input.json、sources.json、evidence.json、coverage.json、claims.json。原始下载文件及可用的文本放 work/raw，遵守网站许可与访问权限。研究清单和台账是必要工作底稿，不另输出重复总结。
-
-原文先识别目录、业务结构、会计政策、重要附注和风险，再按问题定位细读。完整文件保留在本地，记录URL、版本及页码/章节；后续使用搜索和行范围读取，避免反复打印全文。只截取关键词附近的句子不能代替阅读解释口径的上下文。PDF文字提取异常时检查原页，不把乱码当缺披露。
-
-恢复先用 research_context.py status 查看已有文件与缺口；其 recorded_status 不是重新验收。按章用 section 读取完整细则、关联证据及推断依据，模型单值用 model 查询；查询不证明资料仍有效，也不代替原文与全局冲突检查。相同原始披露复用同一来源/证据，不把转载当新增验证；发现重述、更新或资料截止日变化，保留旧版本并重核受影响数字、推断及结论。不要建立不可检查来源的摘要替代原件。
-
-关联证据很多时把查询的完整JSON重定向到work临时文件，再用Python按证据ID/问题取用，避免控制台截断或反复回传整份台账。完整内容仍须可查，不以计数或短摘要代替核验。命令正常执行不需要阅读脚本源码；只有适配或排错时再查相关实现。
+默认成果为 report.md、model.xlsx、tracker.md；work 下保存 input.json、sources.json、evidence.json、coverage.json、claims.json 和 model-results.json。原始下载文件放 work/raw，遵守网站许可与访问权限。研究清单和台账是必要工作底稿，不另输出重复总结。
 
 ## 来源获取
 

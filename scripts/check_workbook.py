@@ -83,16 +83,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("workbook", type=Path)
     parser.add_argument("--recalculate", action="store_true")
-    parser.add_argument("--summary", action="store_true", help="Print counts/examples; full engine_check remains in model-results.json")
     args = parser.parse_args()
     try:
         report = check(args.workbook, args.recalculate)
     except (ValueError, OSError, subprocess.TimeoutExpired) as exc:
         parser.exit(2, str(exc) + "\n")
-    if args.summary:
-        from research_context import summarize
-        output = summarize(report, args.workbook.parent / "model-results.json", ("errors", "missing"))
-    else:
-        output = report
-    print(json.dumps(output, ensure_ascii=False))
+    print(json.dumps(report, ensure_ascii=False))
     raise SystemExit(1 if report["errors"] else 0)
