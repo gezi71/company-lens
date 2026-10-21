@@ -50,3 +50,9 @@ Excel活公式由openpyxl生成；openpyxl不执行公式。实际重算需要�
 默认 `research/<公司标识>/<截止日>/`，使用 `init_research.py` 创建；脚本不覆盖已有目录。后续财报更新时保留旧版，重新验证受影响证据、预测与反证条件，再重建模型和结论。
 
 安装说明已按官方文件规范核对；不代表已在所有平台版本、权限策略或云端环境做了实际运行测试。
+
+## 按需查询与恢复
+
+新增 research_context.py 只使用标准库，不需要安装其他Skill。先用 `python3 scripts/research_context.py status <研究目录>` 查看阶段和缺口，再核对主体/截止日/版本并继续。`section <研究目录> <章节号>` 查询完整章节细则及已有证据；`model <研究目录> <单元格引用…>` 查询保存的模型结果。输出为JSON，未知值保留null；引用缺失或文件损坏会明确报出，不把查询当验收。
+
+构建模型及检查命令可加 `--summary`；它仅简化控制台输出，仍须处理完整明细。`coverage <研究目录>` 在模板标记内生成附录A；旧报告没有标记时生成独立覆盖附录，原报告保持不变。命令接口见 [references/data-contract.md](references/data-contract.md)。

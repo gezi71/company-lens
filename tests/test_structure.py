@@ -18,6 +18,13 @@ class Structure(unittest.TestCase):
     def test_prompt_coverage_and_report_map_agree(self):
         mapping=json.loads((ROOT/"assets/research-map.json").read_text())
         self.assertEqual([x["id"] for x in mapping],list(range(1,52)))
+        self.assertEqual(sum(len(x["checks"]) for x in mapping),581)
+        navigation=(ROOT/"references/research-map.md").read_text()
+        for item in mapping:
+            self.assertIn(f"| {item['id']} | {item['title']} |",navigation)
+            if item["id"] >= 45:
+                for check in item["checks"]:
+                    self.assertIn("- "+check,navigation)
         report=(ROOT/"assets/report-template.md").read_text()
         self.assertEqual([int(x) for x in re.findall(r"^## (\d+)\.",report,re.M)],list(range(1,23)))
         for item in mapping:

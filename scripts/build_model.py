@@ -543,10 +543,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--summary", action="store_true", help="Print counts/examples; retain full model-results.json")
     args = parser.parse_args()
     try:
         result = build(json.loads(args.input.read_text()), args.output)
     except (ValueError, KeyError, ImportError) as exc:
         parser.exit(2, str(exc) + "\n")
-    print(json.dumps({k: result[k] for k in ("status", "errors", "missing", "untraced_inputs")}, ensure_ascii=False))
+    if args.summary:
+        from research_context import summarize
+        report = summarize(result, args.output.parent / "model-results.json",
+                           ("errors", "missing", "untraced_inputs", "scope_limitations"))
+    else:
+        report = {k: result[k] for k in ("status", "errors", "missing", "untraced_inputs")}
+    print(json.dumps(report, ensure_ascii=False))
     raise SystemExit(1 if result["errors"] else 0)

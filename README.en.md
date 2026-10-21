@@ -46,6 +46,8 @@ git clone https://github.com/gezi71/company-lens.git \
 
 Alternatively, download the [release ZIP](https://github.com/gezi71/company-lens/releases/tag/v0.1.0), extract it, and place the entire `comprehensive-company-research` folder in the appropriate skills directory. Preserve the internal structure.
 
+For the latest efficiency tools, use the Git installation above and update `main`. The `v0.1.0` ZIP remains the original preview and does not include later changes.
+
 See [INSTALL.md](INSTALL.md) for project-scoped installation and Windows notes. Locations follow the [official OpenAI skill documentation](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills) and [Claude Code skill documentation](https://code.claude.com/docs/en/skills). Organization policies and cloud environments may use different loading mechanisms.
 
 ### 2. Prepare Python
@@ -217,6 +219,25 @@ flowchart LR
 - **Scoring:** retain seven scores out of ten with evidence and clear direction. Insufficient evidence can mean no score; a higher risk score means higher risk.
 
 Stage records support resuming interrupted research. A conditional deliverable is allowed when evidence is incomplete, with affected work marked `limited` rather than fully verified.
+
+## Reuse tools and measured token use
+
+The workflow retains all 51 coverage items, 22 report sections, the Excel model, adversarial analysis, and final validation. Efficiency changes target repeated reading and formatting, while preserving research depth and verification requirements.
+
+- **Retrieve by section:** the navigation lists all 51 items; the canonical JSON retains all 581 detailed checks. Scoped views include related evidence, sources, limitations, conflicts, and recursive inference bases.
+- **Reuse workpapers:** check identity, cutoff, and disclosure versions before resuming. New disclosures or restatements require rechecking affected inputs and conclusions.
+- **Generate fixed material:** render the coverage appendix from the ledger. Optional model/check summaries show counts and examples while retaining full local results.
+
+```sh
+python3 scripts/research_context.py status <research-directory>
+python3 scripts/research_context.py section <research-directory> 7
+python3 scripts/research_context.py model <research-directory> 'Base!B5' 'Valuation!B23'
+python3 scripts/research_context.py coverage <research-directory>
+```
+
+The model builder and workbook checker accept `--summary` without changing calculations, checks, or exit rules. Queries read saved workpapers; they do not verify freshness or replace final validation. The new helper uses only Python's standard library. See the [data interface](references/data-contract.md).
+
+In the full Microsoft comparison, total tokens increased by 12.70% after including required quality repairs; end-to-end savings were not demonstrated. Status/section queries therefore remain optional rather than mandatory workflow steps. Full coverage, deliverables, and verification requirements remain. No savings percentage is promised; see [measurement, cache effects, and limitations](VALIDATION.md).
 
 ## Validation and limitations
 

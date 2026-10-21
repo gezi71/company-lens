@@ -11,6 +11,19 @@ python3 scripts/validate_research.py research/company/2026-10-20
 
 日期是调用示例，执行时替换。初始化拒绝覆盖非空目录。构建器会覆盖指定的模型及同目录 model-results.json，因此更新先保留旧版本或选择新截止日目录。
 
+## 按需查询与简明输出
+
+```sh
+python3 scripts/research_context.py status <研究目录>
+python3 scripts/research_context.py section <研究目录> 7
+python3 scripts/research_context.py model <研究目录> 'Base!B5' 'Valuation!B23'
+python3 scripts/research_context.py coverage <研究目录>
+```
+
+前三个命令只读现有文件，不触发联网、建模或验收；未知值保持null，缺失引用显式诊断并非零退出。section 返回完整关联证据（含递归 basis_ids、来源、限制）、声明和章节细则；不自动搜出尚未关联的证据，仍须跨章检查冲突和遗漏。损坏的必需文件非零退出，初始目录尚无模型时status明确显示缺少产物。
+
+build_model.py 与 check_workbook.py 的可选 `--summary` 只改变控制台呈现，不减少计算/检查，不改变退出规则。返回状态、检查计数、每类问题数量/最多10条样例及完整结果路径；其余明细保存在 model-results.json（引擎检查在 engine_check）。有错误或缺口须读取并处理完整明细，不以样例代替验收。原有不带参数调用保持兼容。
+
 ## input.json
 
 顶层：company、as_of（ISO日期）、currency、money_unit、shares_unit（两者各选units/thousand/million/billion）、industry_type、selected_case（bear/base/bull）、history、scenarios、valuation、provenance、limitations。synthetic仅用于测试；真实研究不得为true。

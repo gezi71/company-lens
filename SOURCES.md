@@ -22,3 +22,9 @@
 - 相应MIT许可保存在 licenses 下。已查四仓库递归树未发现NOTICE文件；不将此结论扩展到无关partner-built资源。
 
 发布者 gezi71 已选择对本项目原创代码、模板和研究规则采用根目录 [MIT License](LICENSE)，Copyright (c) 2026 gezi71。原始提示词的权利归用户；以上上游内容仍保留各自适用许可与归属，根目录MIT不替代上游许可义务。
+
+## 执行效率方法参考
+
+本轮按需读取、完整资料落盘及可定位恢复的方法参考 [muratcankoylan / Agent-Skills-for-Context-Engineering 的 filesystem-context](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/blob/main/skills/filesystem-context/SKILL.md)，并参考其 [context-optimization](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/blob/main/skills/context-optimization/SKILL.md) 中先测量再优化的原则。核验日期2026-10-20；重新编写为本项目台账查询及附录工具，未移植上游脚本或加入运行依赖。
+
+上游MIT，Copyright (c) 2025 Context Engineering Agent Skills Contributors，许可正文保存于 [licenses/context-engineering-MIT.txt](licenses/context-engineering-MIT.txt)。不沿用上游节省比例、允许质量下降的目标或自动多Agent策略；本项目需独立验证质量与实际用量。
